@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,16 +24,22 @@ namespace MindAllot
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;
+            IdeaListBox.ItemsSource = ideaList;
+            TodoListBox.ItemsSource = todoList;
         }
+
+        public ObservableCollection<Tuple<bool, string>> ideaList = new ObservableCollection<Tuple<bool, string>>();
+        public ObservableCollection<Tuple<bool, string>> todoList = new ObservableCollection<Tuple<bool, string>>();
 
         private void NewIdeaButton_Click(object sender, RoutedEventArgs e)
         {
-            IdeaListBox.Items.Add("Idea " + DateTime.Now.ToUniversalTime());
+            ideaList.Add(new Tuple<bool, string>(false, "Idea " + DateTime.Now.ToUniversalTime()));
         }
 
         private void NewTodoButton_Click(object sender, RoutedEventArgs e)
         {
-            TodoListBox.Items.Add("Todo " + DateTime.Now.ToUniversalTime());
+            todoList.Add(new Tuple<bool, string>(false, "Todo " + DateTime.Now.ToUniversalTime()));
         }
 
         private void IdeaListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

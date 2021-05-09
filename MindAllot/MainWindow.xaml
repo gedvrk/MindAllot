@@ -26,6 +26,16 @@
                                          Background="Aqua"
                                          VerticalAlignment="Stretch"
                                          SelectionChanged="IdeaListBox_SelectionChanged">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <CheckBox IsChecked="{Binding Path=Item1, Mode=OneWay}"
+                                                          Margin="10" />
+                                                <TextBlock Margin="10"
+                                                           Text="{Binding Path=Item2}" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
                                 </ListBox>
                             </TabItem>
                             <TabItem Header="Todo">
@@ -34,6 +44,16 @@
                                          Background="Aqua"
                                          VerticalAlignment="Stretch"
                                          SelectionChanged="TodoListBox_SelectionChanged">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <CheckBox IsChecked="{Binding Path=Item1, Mode=OneWay}"
+                                                          Margin="10" />
+                                                <TextBlock Margin="10"
+                                                           Text="{Binding Path=Item2}" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
                                 </ListBox>
                             </TabItem>
                         </TabControl>
@@ -53,7 +73,7 @@
                                        Text="TextBlock"
                                        VerticalAlignment="Top" />
                             <Button x:Name="NewIdeaButton"
-                                Content="New Idea"
+                                    Content="New Idea"
                                     Click="NewIdeaButton_Click" />
                             <Button x:Name="NewTodoButton"
                                     Content="New Todo"
