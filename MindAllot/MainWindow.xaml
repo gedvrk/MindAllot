@@ -5,8 +5,73 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MindAllot"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow"
+        Height="800"
+        WindowStartupLocation="CenterScreen"
+        Width="700">
     <Grid>
-        
+        <TabControl HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch">
+            <TabItem Header="Ideas">
+                <Grid>
+                    <Border Grid.Column="0"
+                            BorderThickness="1"
+                            BorderBrush="Black"
+                            Background="DarkGray"
+                            HorizontalAlignment="Stretch">
+                        <TabControl>
+                            <TabItem Header="Daily">
+                                <ListBox x:Name="IdeaListBox"
+                                         HorizontalAlignment="Stretch"
+                                         Background="Aqua"
+                                         VerticalAlignment="Stretch"
+                                         SelectionChanged="IdeaListBox_SelectionChanged">
+                                </ListBox>
+                            </TabItem>
+                            <TabItem Header="Todo">
+                                <ListBox x:Name="TodoListBox"
+                                         HorizontalAlignment="Stretch"
+                                         Background="Aqua"
+                                         VerticalAlignment="Stretch"
+                                         SelectionChanged="TodoListBox_SelectionChanged">
+                                </ListBox>
+                            </TabItem>
+                        </TabControl>
+                    </Border>
+                    <Border Grid.Column="1"
+                            BorderThickness="1"
+                            BorderBrush="Black"
+                            Background="DarkGray"
+                            HorizontalAlignment="Stretch">
+                        <StackPanel>
+                            <TextBlock x:Name="DisplayTextBlock"
+                                       Background="White"
+                                       HorizontalAlignment="Stretch"
+                                       Height="400"
+                                       Margin="10,10,10,10"
+                                       TextWrapping="Wrap"
+                                       Text="TextBlock"
+                                       VerticalAlignment="Top" />
+                            <Button x:Name="NewIdeaButton"
+                                Content="New Idea"
+                                    Click="NewIdeaButton_Click" />
+                            <Button x:Name="NewTodoButton"
+                                    Content="New Todo"
+                                    Click="NewTodoButton_Click" />
+                        </StackPanel>
+                    </Border>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Calendar">
+                <Grid Background="#FFE5E5E5" />
+            </TabItem>
+            <TabItem Header="Options">
+                <Grid Background="#FFE5E5E5" />
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

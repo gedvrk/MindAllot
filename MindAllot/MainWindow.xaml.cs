@@ -24,5 +24,27 @@ namespace MindAllot
         {
             InitializeComponent();
         }
+
+        private void NewIdeaButton_Click(object sender, RoutedEventArgs e)
+        {
+            IdeaListBox.Items.Add("Idea " + DateTime.Now.ToUniversalTime());
+        }
+
+        private void NewTodoButton_Click(object sender, RoutedEventArgs e)
+        {
+            TodoListBox.Items.Add("Todo " + DateTime.Now.ToUniversalTime());
+        }
+
+        private void IdeaListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count > 0)
+                DisplayTextBlock.Text = e.AddedItems[0].ToString();
+        }
+
+        private void TodoListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count > 0)
+                DisplayTextBlock.Text = e.AddedItems[0].ToString();
+        }
     }
 }
