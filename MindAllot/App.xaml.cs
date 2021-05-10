@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace MindAllot
 {
@@ -13,5 +14,16 @@ namespace MindAllot
     /// </summary>
     public partial class App : Application
     {
+        private void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            e.Handled = true;
+
+            MessageBox.Show("An unhandled exception just occurred: " + e.Exception.Message,
+                "Error",
+                MessageBoxButton.OK,
+                MessageBoxImage.Error);
+
+            Application.Current.Shutdown();
+        }
     }
 }
