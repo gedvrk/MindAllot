@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,13 @@ namespace MindAllot
             DataContext = this;
             IdeaListBox.ItemsSource = ideaList;
             TodoListBox.ItemsSource = todoList;
+
+            var americanTimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time");
+            var japaneseTimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Tokyo Standard Time");
+
+            LocalTimeTextBlock.Text = DateTime.Now.ToString();
+            AmericanTimeTextBlock.Text = TimeZoneInfo.ConvertTime(DateTime.Now, americanTimeZoneInfo).ToString();
+            JapaneseTimeTextBlock.Text = TimeZoneInfo.ConvertTime(DateTime.Now, japaneseTimeZoneInfo).ToString();
         }
 
         public ObservableCollection<Tuple<bool, string>> ideaList = new ObservableCollection<Tuple<bool, string>>();
