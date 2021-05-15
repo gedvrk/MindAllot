@@ -3,12 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:converters="clr-namespace:MindAllot.Converters"
         xmlns:local="clr-namespace:MindAllot"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="800"
         WindowStartupLocation="CenterScreen"
         Width="700">
+    <Window.Resources>
+        <converters:TaskStateToBoolConverter x:Key="taskStateToBool" />
+    </Window.Resources>
     <Grid>
         <TabControl HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch">
@@ -29,10 +33,10 @@
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
-                                                <CheckBox IsChecked="{Binding Path=Item1, Mode=OneWay}"
+                                                <CheckBox IsChecked="{Binding Path=State, Converter={StaticResource taskStateToBool}}"
                                                           Margin="10" />
                                                 <TextBlock Margin="10"
-                                                           Text="{Binding Path=Item2}" />
+                                                           Text="{Binding Path=Title}" />
                                             </StackPanel>
                                         </DataTemplate>
                                     </ListBox.ItemTemplate>
@@ -47,10 +51,10 @@
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
-                                                <CheckBox IsChecked="{Binding Path=Item1, Mode=OneWay}"
+                                                <CheckBox IsChecked="{Binding Path=State, Converter={StaticResource taskStateToBool}}"
                                                           Margin="10" />
                                                 <TextBlock Margin="10"
-                                                           Text="{Binding Path=Item2}" />
+                                                           Text="{Binding Path=Description}" />
                                             </StackPanel>
                                         </DataTemplate>
                                     </ListBox.ItemTemplate>

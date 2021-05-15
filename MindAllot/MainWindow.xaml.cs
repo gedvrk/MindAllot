@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MindAllot.Data;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -26,8 +27,8 @@ namespace MindAllot
         {
             InitializeComponent();
             DataContext = this;
-            IdeaListBox.ItemsSource = ideaList;
-            TodoListBox.ItemsSource = todoList;
+            IdeaListBox.ItemsSource = dailyTasks;
+            TodoListBox.ItemsSource = todos;
 
             var americanTimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time");
             var japaneseTimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Tokyo Standard Time");
@@ -37,17 +38,17 @@ namespace MindAllot
             JapaneseTimeTextBlock.Text = TimeZoneInfo.ConvertTime(DateTime.Now, japaneseTimeZoneInfo).ToString();
         }
 
-        public ObservableCollection<Tuple<bool, string>> ideaList = new ObservableCollection<Tuple<bool, string>>();
-        public ObservableCollection<Tuple<bool, string>> todoList = new ObservableCollection<Tuple<bool, string>>();
+        public ObservableCollection<DailyTask> dailyTasks = new ObservableCollection<DailyTask>();
+        public ObservableCollection<Data.Task> todos = new ObservableCollection<Data.Task>();
 
         private void NewIdeaButton_Click(object sender, RoutedEventArgs e)
         {
-            ideaList.Add(new Tuple<bool, string>(false, "Idea " + DateTime.Now.ToUniversalTime()));
+            dailyTasks.Add(new DailyTask { DailyState = Data.Enums.TaskState.Ongoing, Title = "IDea" + DateTime.Now.ToUniversalTime() });
         }
 
         private void NewTodoButton_Click(object sender, RoutedEventArgs e)
         {
-            todoList.Add(new Tuple<bool, string>(false, "Todo " + DateTime.Now.ToUniversalTime()));
+            todos.Add(new Data.Task { State = Data.Enums.TaskState.Completed, Description = "Todo " + DateTime.Now.ToUniversalTime() });
         }
 
         private void IdeaListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
