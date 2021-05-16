@@ -1,4 +1,5 @@
 ﻿using MindAllot.Data;
+using MindAllot.Viewmodels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,7 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MindAllot
+namespace MindAllot.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -26,7 +27,7 @@ namespace MindAllot
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = this;
+            DataContext = new MainViewModel();
             IdeaListBox.ItemsSource = dailyTasks;
             TodoListBox.ItemsSource = todos;
 
