@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:converters="clr-namespace:MindAllot.Converters"
         xmlns:local="clr-namespace:MindAllot.Views"
+        xmlns:viewModel="clr-namespace:MindAllot.Viewmodels"
+        d:DataContext="{d:DesignInstance Type=viewModel:MainViewModel}"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="800"
