@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Resources;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -18,12 +13,16 @@ namespace MindAllot
         {
             e.Handled = true;
 
-            MessageBox.Show("An unhandled exception just occurred: " + e.Exception.Message,
-                "Error",
+            ResourceManager resourceManager = new ResourceManager(typeof(MindAllotStrings));
+            string errorTitle = resourceManager.GetString("GlobalErrorWindowTitle");
+            string errorMessage = resourceManager.GetString("GlobalErrorWindowMessage");
+
+            _ = MessageBox.Show(errorMessage + " : " + e.Exception.Message,
+                errorTitle,
                 MessageBoxButton.OK,
                 MessageBoxImage.Error);
 
-            Application.Current.Shutdown();
+            Current.Shutdown();
         }
     }
 }

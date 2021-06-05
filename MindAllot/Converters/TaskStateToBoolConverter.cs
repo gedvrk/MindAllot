@@ -13,6 +13,7 @@ namespace MindAllot.Converters
             {
                 case TaskState.Ongoing:
                     return false;
+
                 case TaskState.Completed:
                 default:
                     return true;
@@ -21,10 +22,7 @@ namespace MindAllot.Converters
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if ((bool)value)
-                return TaskState.Completed;
-
-            return TaskState.Ongoing;
+            return (bool)value ? TaskState.Completed : TaskState.Ongoing;
         }
     }
 }

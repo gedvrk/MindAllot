@@ -1,21 +1,10 @@
 ﻿using MindAllot.Data;
-using MindAllot.Viewmodels;
+using MindAllot.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MindAllot.Views
 {
@@ -28,40 +17,44 @@ namespace MindAllot.Views
         {
             InitializeComponent();
             DataContext = new MainViewModel();
-            IdeaListBox.ItemsSource = dailyTasks;
-            TodoListBox.ItemsSource = todos;
+            IdeaListBox.ItemsSource = DailyTasks;
+            TodoListBox.ItemsSource = Todos;
 
-            var americanTimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time");
-            var japaneseTimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Tokyo Standard Time");
+            TimeZoneInfo americanTimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time");
+            TimeZoneInfo japaneseTimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Tokyo Standard Time");
 
-            LocalTimeTextBlock.Text = DateTime.Now.ToString();
-            AmericanTimeTextBlock.Text = TimeZoneInfo.ConvertTime(DateTime.Now, americanTimeZoneInfo).ToString();
-            JapaneseTimeTextBlock.Text = TimeZoneInfo.ConvertTime(DateTime.Now, japaneseTimeZoneInfo).ToString();
+            LocalTimeTextBlock.Text = DateTime.Now.ToString(CultureInfo.InvariantCulture);
+            AmericanTimeTextBlock.Text = TimeZoneInfo.ConvertTime(DateTime.Now, americanTimeZoneInfo).ToString(CultureInfo.InvariantCulture);
+            JapaneseTimeTextBlock.Text = TimeZoneInfo.ConvertTime(DateTime.Now, japaneseTimeZoneInfo).ToString(CultureInfo.InvariantCulture);
         }
 
-        public ObservableCollection<DailyTask> dailyTasks = new ObservableCollection<DailyTask>();
-        public ObservableCollection<Data.Task> todos = new ObservableCollection<Data.Task>();
+        private readonly ObservableCollection<DailyTask> DailyTasks = new ObservableCollection<DailyTask>();
+        private readonly ObservableCollection<Task> Todos = new ObservableCollection<Task>();
 
         private void NewIdeaButton_Click(object sender, RoutedEventArgs e)
         {
-            dailyTasks.Add(new DailyTask { DailyState = Data.Enums.TaskState.Ongoing, Title = "IDea" + DateTime.Now.ToUniversalTime() });
+            DailyTasks.Add(new DailyTask { DailyState = Data.Enums.TaskState.Ongoing, Title = "IDea" + DateTime.Now.ToUniversalTime().ToString(CultureInfo.InvariantCulture) });
         }
 
         private void NewTodoButton_Click(object sender, RoutedEventArgs e)
         {
-            todos.Add(new Data.Task { State = Data.Enums.TaskState.Completed, Description = "Todo " + DateTime.Now.ToUniversalTime() });
+            Todos.Add(new Task { State = Data.Enums.TaskState.Completed, Description = "Todo " + DateTime.Now.ToUniversalTime().ToString(CultureInfo.InvariantCulture) });
         }
 
         private void IdeaListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count > 0)
+            {
                 DisplayTextBlock.Text = e.AddedItems[0].ToString();
+            }
         }
 
         private void TodoListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count > 0)
+            {
                 DisplayTextBlock.Text = e.AddedItems[0].ToString();
+            }
         }
     }
 }

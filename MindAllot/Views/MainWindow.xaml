@@ -1,17 +1,17 @@
 ﻿<Window x:Class="MindAllot.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:converters="clr-namespace:MindAllot.Converters"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:MindAllot.Views"
-        xmlns:viewModel="clr-namespace:MindAllot.Viewmodels"
-        d:DataContext="{d:DesignInstance Type=viewModel:MainViewModel}"
-        mc:Ignorable="d"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:MindAllot.ViewModels"
         Title="MainWindow"
+        Width="700"
         Height="800"
+        d:DataContext="{d:DesignInstance Type=viewModel:MainViewModel}"
         WindowStartupLocation="CenterScreen"
-        Width="700">
+        mc:Ignorable="d">
     <Window.Resources>
         <converters:TaskStateToBoolConverter x:Key="taskStateToBool" />
     </Window.Resources>
@@ -21,22 +21,22 @@
             <TabItem Header="Ideas">
                 <Grid>
                     <Border Grid.Column="0"
-                            BorderThickness="1"
-                            BorderBrush="Black"
+                            HorizontalAlignment="Stretch"
                             Background="DarkGray"
-                            HorizontalAlignment="Stretch">
+                            BorderBrush="Black"
+                            BorderThickness="1">
                         <TabControl>
                             <TabItem Header="Daily">
                                 <ListBox x:Name="IdeaListBox"
                                          HorizontalAlignment="Stretch"
-                                         Background="Aqua"
                                          VerticalAlignment="Stretch"
+                                         Background="Aqua"
                                          SelectionChanged="IdeaListBox_SelectionChanged">
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
-                                                <CheckBox IsChecked="{Binding Path=State, Converter={StaticResource taskStateToBool}}"
-                                                          Margin="10" />
+                                                <CheckBox Margin="10"
+                                                          IsChecked="{Binding Path=State, Converter={StaticResource taskStateToBool}}" />
                                                 <TextBlock Margin="10"
                                                            Text="{Binding Path=Title}" />
                                             </StackPanel>
@@ -47,14 +47,14 @@
                             <TabItem Header="Todo">
                                 <ListBox x:Name="TodoListBox"
                                          HorizontalAlignment="Stretch"
-                                         Background="Aqua"
                                          VerticalAlignment="Stretch"
+                                         Background="Aqua"
                                          SelectionChanged="TodoListBox_SelectionChanged">
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
-                                                <CheckBox IsChecked="{Binding Path=State, Converter={StaticResource taskStateToBool}}"
-                                                          Margin="10" />
+                                                <CheckBox Margin="10"
+                                                          IsChecked="{Binding Path=State, Converter={StaticResource taskStateToBool}}" />
                                                 <TextBlock Margin="10"
                                                            Text="{Binding Path=Description}" />
                                             </StackPanel>
@@ -65,25 +65,25 @@
                         </TabControl>
                     </Border>
                     <Border Grid.Column="1"
-                            BorderThickness="1"
-                            BorderBrush="Black"
+                            HorizontalAlignment="Stretch"
                             Background="DarkGray"
-                            HorizontalAlignment="Stretch">
+                            BorderBrush="Black"
+                            BorderThickness="1">
                         <StackPanel>
                             <TextBlock x:Name="DisplayTextBlock"
-                                       Background="White"
-                                       HorizontalAlignment="Stretch"
                                        Height="400"
                                        Margin="10,10,10,10"
-                                       TextWrapping="Wrap"
+                                       HorizontalAlignment="Stretch"
+                                       VerticalAlignment="Top"
+                                       Background="White"
                                        Text="TextBlock"
-                                       VerticalAlignment="Top" />
+                                       TextWrapping="Wrap" />
                             <Button x:Name="NewIdeaButton"
-                                    Content="New Idea"
-                                    Click="NewIdeaButton_Click" />
+                                    Click="NewIdeaButton_Click"
+                                    Content="New Idea" />
                             <Button x:Name="NewTodoButton"
-                                    Content="New Todo"
-                                    Click="NewTodoButton_Click" />
+                                    Click="NewTodoButton_Click"
+                                    Content="New Todo" />
                         </StackPanel>
                     </Border>
                     <Grid.ColumnDefinitions>
@@ -100,20 +100,20 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0"
-                                VerticalAlignment="Top"
-                                Height="100">
+                                Height="100"
+                                VerticalAlignment="Top">
                         <Label Content="Local" />
                         <TextBlock x:Name="LocalTimeTextBlock" />
                     </StackPanel>
                     <StackPanel Grid.Column="1"
-                                VerticalAlignment="Top"
-                                Height="100">
+                                Height="100"
+                                VerticalAlignment="Top">
                         <Label Content="PST" />
                         <TextBlock x:Name="AmericanTimeTextBlock" />
                     </StackPanel>
                     <StackPanel Grid.Column="2"
-                                VerticalAlignment="Top"
-                                Height="100">
+                                Height="100"
+                                VerticalAlignment="Top">
                         <Label Content="JST" />
                         <TextBlock x:Name="JapaneseTimeTextBlock" />
                     </StackPanel>

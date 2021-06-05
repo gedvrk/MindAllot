@@ -1,0 +1,25 @@
+# NOTE: Requires **VS2019 16.3** or later
+
+# Rules for MindAllot.Data
+# Description: Code analysis rules for MindAllot.Data.csproj.
+
+# Code files
+[*.{cs,vb}]
+
+
+# Default severity for analyzer diagnostics - Requires **VS2019 16.5** or later
+dotnet_analyzer_diagnostic.severity = warning
+
+dotnet_diagnostic.IDE0067.severity = warning
+
+dotnet_diagnostic.IDE0068.severity = warning
+
+dotnet_diagnostic.IDE0069.severity = warning
+
+dotnet_diagnostic.RS1007.severity = warning
+
+dotnet_diagnostic.RS1015.severity = warning
+
+dotnet_diagnostic.RS1020.severity = warning
+
+dotnet_diagnostic.RS1028.severity = warning
