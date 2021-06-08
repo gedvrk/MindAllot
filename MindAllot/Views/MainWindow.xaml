@@ -31,6 +31,7 @@
                                          HorizontalAlignment="Stretch"
                                          VerticalAlignment="Stretch"
                                          Background="Aqua"
+                                         ItemsSource="{Binding DailyTasks}"
                                          SelectionChanged="IdeaListBox_SelectionChanged">
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
@@ -49,6 +50,7 @@
                                          HorizontalAlignment="Stretch"
                                          VerticalAlignment="Stretch"
                                          Background="Aqua"
+                                         ItemsSource="{Binding Todos}"
                                          SelectionChanged="TodoListBox_SelectionChanged">
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
@@ -79,7 +81,6 @@
                                        Text="TextBlock"
                                        TextWrapping="Wrap" />
                             <Button x:Name="NewIdeaButton"
-                                    Click="NewIdeaButton_Click"
                                     Command="{Binding NewIdeaCommand}"
                                     Content="New Idea" />
                             <Button x:Name="NewTodoButton"

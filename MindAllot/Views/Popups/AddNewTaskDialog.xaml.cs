@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using MindAllot.ViewModels;
+using System.Windows;
 
 namespace MindAllot.Views.Popups
 {
@@ -9,6 +10,8 @@ namespace MindAllot.Views.Popups
     {
         public AddNewTaskDialog()
         {
+            DataContext = new DialogViewModel();
+
             InitializeComponent();
         }
     }
