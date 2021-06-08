@@ -80,6 +80,7 @@
                                        TextWrapping="Wrap" />
                             <Button x:Name="NewIdeaButton"
                                     Click="NewIdeaButton_Click"
+                                    Command="{Binding NewIdeaCommand}"
                                     Content="New Idea" />
                             <Button x:Name="NewTodoButton"
                                     Click="NewTodoButton_Click"
