@@ -31,7 +31,7 @@
                                          HorizontalAlignment="Stretch"
                                          VerticalAlignment="Stretch"
                                          Background="Aqua"
-                                         ItemsSource="{Binding DailyTasks}"
+                                         ItemsSource="{Binding Ideas}"
                                          SelectionChanged="IdeaListBox_SelectionChanged">
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
