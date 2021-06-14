@@ -22,9 +22,9 @@ namespace MindAllot.Views
             TimeZoneInfo americanTimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time");
             TimeZoneInfo japaneseTimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Tokyo Standard Time");
 
-            LocalTimeTextBlock.Text = DateTime.Now.ToString(CultureInfo.InvariantCulture);
-            AmericanTimeTextBlock.Text = TimeZoneInfo.ConvertTime(DateTime.Now, americanTimeZoneInfo).ToString(CultureInfo.InvariantCulture);
-            JapaneseTimeTextBlock.Text = TimeZoneInfo.ConvertTime(DateTime.Now, japaneseTimeZoneInfo).ToString(CultureInfo.InvariantCulture);
+            //LocalTimeTextBlock.Text = DateTime.Now.ToString(CultureInfo.InvariantCulture);
+            //AmericanTimeTextBlock.Text = TimeZoneInfo.ConvertTime(DateTime.Now, americanTimeZoneInfo).ToString(CultureInfo.InvariantCulture);
+            //JapaneseTimeTextBlock.Text = TimeZoneInfo.ConvertTime(DateTime.Now, japaneseTimeZoneInfo).ToString(CultureInfo.InvariantCulture);
         }
 
         private void NewTodoButton_Click(object sender, RoutedEventArgs e)
@@ -36,7 +36,7 @@ namespace MindAllot.Views
         {
             if (e.AddedItems.Count > 0)
             {
-                DisplayTextBlock.Text = e.AddedItems[0].ToString();
+                //DisplayTextBlock.Text = e.AddedItems[0].ToString();
             }
         }
 
@@ -44,7 +44,7 @@ namespace MindAllot.Views
         {
             if (e.AddedItems.Count > 0)
             {
-                DisplayTextBlock.Text = e.AddedItems[0].ToString();
+                //DisplayTextBlock.Text = e.AddedItems[0].ToString();
             }
         }
     }
