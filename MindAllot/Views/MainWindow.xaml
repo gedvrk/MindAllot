@@ -16,6 +16,43 @@
         mc:Ignorable="d">
     <Window.Resources>
         <converters:TaskStateToBoolConverter x:Key="taskStateToBool" />
+
+        <ImageBrush x:Key="ToggleButtonMouseOver"
+                    ImageSource="https://via.placeholder.com/20" />
+
+        <Style x:Key="TextFontStyle"
+               TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Fonts/Roboto-Light.tff #Roboto" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+
+        <Style x:Key="ToggleButtonStyle"
+               TargetType="{x:Type ToggleButton}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Border x:Name="ToggleButtonBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                SnapsToDevicePixels="True" />
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ToggleButtonBorder" Property="Background" Value="{StaticResource ToggleButtonMouseOver}" />
+                                <Setter TargetName="ToggleButtonBorder" Property="BorderBrush" Value="{StaticResource ToggleButtonMouseOver}" />
+                            </Trigger>
+
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="ToggleButtonBorder" Property="Background" Value="{StaticResource ToggleButtonMouseOver}" />
+                                <Setter TargetName="ToggleButtonBorder" Property="BorderBrush" Value="{StaticResource ToggleButtonMouseOver}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid Background="Black">
@@ -25,6 +62,25 @@
                   Background="#2E333A">
                 <StackPanel x:Name="NavigationStack">
                     <Grid Height="90">
+
+                        <TextBlock Grid.Row="1"
+                                   Grid.Column="0"
+                                   Margin="73,-20,0,0"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Background="Transparent"
+                                   FontSize="22"
+                                   Foreground="White"
+                                   Style="{StaticResource TextFontStyle}"
+                                   Text="M E N U">
+                            <TextBlock.Effect>
+                                <DropShadowEffect BlurRadius="10"
+                                                  Direction="-90"
+                                                  ShadowDepth="1"
+                                                  Color="White" />
+                            </TextBlock.Effect>
+                        </TextBlock>
+
                         <ToggleButton x:Name="ToggleButton"
                                       Grid.Column="0"
                                       Width="30"
@@ -32,7 +88,8 @@
                                       Margin="18,-20,0,0"
                                       HorizontalAlignment="Left"
                                       VerticalAlignment="Center"
-                                      BorderThickness="0">
+                                      BorderThickness="0"
+                                      Style="{StaticResource ToggleButtonStyle}">
                             <ToggleButton.Background>
                                 <ImageBrush ImageSource="https://via.placeholder.com/30"
                                             Stretch="None" />
@@ -65,6 +122,9 @@
                             </ToggleButton.Triggers>
                         </ToggleButton>
                     </Grid>
+
+
+
                 </StackPanel>
             </Grid>
         </Grid>

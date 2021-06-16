@@ -168,6 +168,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Fonts\Roboto-Light.ttf" />
     <None Include="MindAllotKey.snk" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
