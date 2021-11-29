@@ -20,6 +20,18 @@ namespace MindAllot.ViewModels
             }
         }
 
+        private string _dialogDescription;
+
+        public string DialogDescription
+        {
+            get => _dialogDescription;
+            set
+            {
+                _dialogDescription = value;
+                OnPropertyChanged(nameof(DialogDescription));
+            }
+        }
+
         public DialogViewModel()
         {
             AddCommand = new RelayCommand(o => { Add(o); });
